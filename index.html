@@ -310,12 +310,12 @@ dialog img{max-height:78vh;margin:0 auto}
 <script>
 /* ===== ÚNICO LOCAL PARA EDITAR OS DADOS DA BARBEARIA ===== */
 const CONFIG = {
-  nome: "BARBEARIA DOM CABELOS",
+  nome: "BARBEARIA DOM CARLOS",
   whatsapp: "5586981053234",
   endereco: { linha: "Av. São Raimundo, Cristo Rei", cidade: "Teresina – PI", cep: "64017-090" },
-  horarios: [{ dia: "Segunda a sábado", horas: "9h às 19h" }, { dia: "Pausa para almoço", horas: "12h às 13h" }, { dia: "Sábado", horas: "por ordem de chegada, sem agendamento" }],
+  horarios: [{ dia: "Segunda a sábado", horas: "9h às 19h" }, { dia: "Pausa para almoço", horas: "12h às 14h" }, { dia: "Sábado", horas: "por ordem de chegada, sem agendamento" }],
   redes: { instagram: "https://www.instagram.com/domcarlos_barbeariathe/", facebook: "" },
-  sobre: "A BARBEARIA DOM CABELOS fica na Av. São Raimundo, no bairro Cristo Rei, em Teresina. Confira as referências visuais e solicite seu horário pelo WhatsApp. Confira os serviços e valores e fale com a gente para confirmar a disponibilidade.",
+  sobre: "A BARBEARIA DOM CARLOS fica na Av. São Raimundo, no bairro Cristo Rei, em Teresina. Confira as referências visuais e solicite seu horário pelo WhatsApp. Confira os serviços e valores e fale com a gente para confirmar a disponibilidade.",
   fotos: {
     hero: "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1100&q=85",
     sobre: "https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=900&q=85"
@@ -334,7 +334,7 @@ const CONFIG = {
   ],
   /* Agenda: horários de 1 em 1 hora, com pausa para o almoço. dias = dias da semana com agendamento (1 = segunda ... 5 = sexta); sábado é por ordem de chegada.
      url = endereço do Google Apps Script (passo a passo em agenda-google-apps-script.gs). Vazio = sem agenda online. */
-  agenda: { url: "", abre: 9, fecha: 19, duracao: 1, almoco: [12, 13], dias: [1, 2, 3, 4, 5], fuso: "America/Fortaleza" },
+  agenda: { url: "", abre: 9, fecha: 19, duracao: 1, almoco: [12, 14], dias: [1, 2, 3, 4, 5], fuso: "America/Fortaleza" },
   /* Tabela de preços conforme a placa da barbearia. preco: null = valor em branco na placa (exibe "a confirmar"). */
   servicos: [
     { nome: "Corte",             desc: "Tesoura ou máquina",  preco: 35, confirmado: true },
@@ -390,7 +390,7 @@ const lista=C.servicos.filter(s=>s.confirmado||C.mostrarExemplos);
 if(lista.some(s=>!s.confirmado))$("#exAviso").hidden=false;
 const sel=new Set();
 /* agenda: profissionais, dias e horários */
-const AG=Object.assign({url:"",abre:9,fecha:19,duracao:1,almoco:[12,13],dias:[1,2,3,4,5],fuso:"America/Fortaleza"},C.agenda||{});
+const AG=Object.assign({url:"",abre:9,fecha:19,duracao:1,almoco:[12,14],dias:[1,2,3,4,5],fuso:"America/Fortaleza"},C.agenda||{});
 const BB=(C.barbeiros||[]).filter(Boolean).map(b=>typeof b==="string"?{nome:b,naoAtende:[]}:b);
 const NOMEDIA=["domingo","segunda-feira","terça-feira","quarta-feira","quinta-feira","sexta-feira","sábado"],ABREV=["Dom","Seg","Ter","Qua","Qui","Sex","Sáb"];
 const [A0,A1]=AG.almoco;
@@ -503,7 +503,7 @@ $("#svc").addEventListener("change",e=>{const i=+e.target.dataset.s;e.target.che
 
 /* galeria em arcos */
 const G=C.galeria,rail=$("#gal");
-$("#galLead").textContent=G.length?"Role para o lado e toque em uma foto para ampliar.":"Fotos provisórias de referência. Substitua pelas fotos reais da BARBEARIA DOM CABELOS antes de publicar.";
+$("#galLead").textContent=G.length?"Role para o lado e toque em uma foto para ampliar.":"Fotos provisórias de referência. Substitua pelas fotos reais da BARBEARIA DOM CARLOS antes de publicar.";
 rail.innerHTML=G.length?G.map((g,i)=>`<button type="button" class="arch" data-g="${i}" aria-label="Ampliar: ${esc(g.alt)}"><img src="${esc(g.src)}" alt="${esc(g.alt)}" loading="lazy" width="540" height="790"></button>`).join(""):
  ["Foto 1","Foto 2","Foto 3","Foto 4","Foto 5"].map((t,i)=>`<div class="arch">${ph(t,i)}</div>`).join("");
 const step=()=>Math.min(innerWidth*.66,270)+18;
